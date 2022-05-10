@@ -30,9 +30,13 @@ public class AccountController {
 	}
 	
 	@PostMapping
-	private Mono<Account> save(@RequestBody Account account, @RequestParam String customerId){
+	private Mono<Account> save(@RequestBody Account account, 
+								@RequestParam String customerId, 
+								@RequestParam String productId){
 		
 		account.setCustomerId(customerId);
+		
+		account.setProductId(productId);
 		
 		return accountService.save(account);
 		

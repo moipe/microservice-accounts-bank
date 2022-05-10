@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.json.JsonMapper;
+import com.nttdata.bank.account.client.ProductClientRest;
 import com.nttdata.bank.account.client.TransactionClientRest;
 import com.nttdata.bank.account.dto.AccountDTO;
 import com.nttdata.bank.account.model.Account;
@@ -23,13 +24,16 @@ public class AccountServiceImpl implements AccountService{
 	private TransactionClientRest transactionClientRest;
 	
 	@Autowired
+	private ProductClientRest productClientRest;
+	
+	@Autowired
 	private JsonMapper jsonMapper;
 
 	@Override
 	public Flux<AccountDTO> findByCustomerId(String customerId) {
 		//return accountRepository.findAccountByCustomerId(customerId);
 		
-		Flux<AccountDTO> accountDTO = accountRepository.findAll().map(a -> convertirAAccountDTO(a));
+		Flux<AccountDTO> accountDTO = accountRepository.findAccountByCustomerId(customerId).map(a -> convertirAAccountDTO(a));
 		
 		return accountDTO.flatMap( account -> 
 										Mono.just(account)
@@ -37,6 +41,12 @@ public class AccountServiceImpl implements AccountService{
 													.collectList(),
 													(a, t) -> {
 														a.setTransactions(t);
+														return a;
+													}
+												)
+										.zipWith(productClientRest.findById(account.getProductId())
+													,(a, p) -> {
+														a.setProduct(p);
 														return a;
 													}
 												)

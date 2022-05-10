@@ -20,6 +20,8 @@ public class Account {
 	
 	//@JsonIgnore
 	private String customerId;
+	
+	private String productId;
 
 
 }
