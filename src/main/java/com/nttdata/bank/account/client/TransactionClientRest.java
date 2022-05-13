@@ -11,7 +11,8 @@ import reactor.core.publisher.Flux;
 @ReactiveFeignClient(name = "service-transaction", url = "localhost:9960")
 public interface TransactionClientRest {
 	
-	@GetMapping("/transaction")
+	//@GetMapping("/transaction")
+	@GetMapping
 	public Flux<Transaction> findByAccountId(@RequestParam String accountId);
 
 }

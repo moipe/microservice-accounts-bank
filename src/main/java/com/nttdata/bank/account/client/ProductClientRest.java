@@ -11,7 +11,8 @@ import reactor.core.publisher.Mono;
 @ReactiveFeignClient(name = "service-product", url = "localhost:9961")
 public interface ProductClientRest {
 
-	@GetMapping("/product/{id}")
+	//@GetMapping("/product/{id}")
+	@GetMapping("/{id}")
 	public Mono<Product> findById(@PathVariable String id);
 	
 }
