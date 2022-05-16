@@ -11,5 +11,7 @@ public interface AccountService {
 	Flux<AccountDTO> findByCustomerId(String customerId);
 	
 	Mono<Account> save(Account account);
+	
+	Mono<Account> updateBalance(String id, Double balance, String type);
 
 }
