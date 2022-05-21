@@ -18,7 +18,6 @@ public class Account {
 	
 	private Double balance;
 	
-	//@JsonIgnore
 	private String customerId;
 	
 	private String productId;

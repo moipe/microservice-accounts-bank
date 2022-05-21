@@ -16,5 +16,7 @@ public class Product {
 	private String type;
 	
 	private String category;
+	
+	private Double commission;
 
 }
