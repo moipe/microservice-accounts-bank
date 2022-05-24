@@ -9,13 +9,21 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Transaction {
+public class Movement {
 	
 	private String _id;
 	
+	private Byte category;
+	
 	private String type;
 	
+	private String description;
+	
 	private Double amount;
+	
+	private String createAt;
+	
+	private String externalAccount;
 	
 	@JsonIgnore
 	private String accountId;

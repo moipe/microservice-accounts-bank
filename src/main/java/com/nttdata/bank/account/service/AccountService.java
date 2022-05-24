@@ -12,6 +12,8 @@ public interface AccountService {
 	
 	Mono<Account> save(Account account);
 	
-	Mono<Account> updateBalance(String id, Double balance, String type);
+	Mono<Account> updateBalance(String id, Double balance, Byte type);
+	
+	Mono<Account> findById(String id);
 
 }

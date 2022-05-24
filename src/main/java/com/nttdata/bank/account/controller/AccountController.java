@@ -46,8 +46,13 @@ public class AccountController {
 	@PutMapping("/{id}")
 	private Mono<Account> updateBalance(@PathVariable String id, 
 										@RequestParam Double balance,
-										@RequestParam String type) {
+										@RequestParam Byte type) {
 		
 		return accountService.updateBalance(id, balance, type);
+	}
+	
+	@GetMapping("/{id}")
+	private Mono<Account> findByid(@PathVariable String id){
+		return accountService.findById(id);
 	}
 }

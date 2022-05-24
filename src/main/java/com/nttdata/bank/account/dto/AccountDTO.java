@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 import com.nttdata.bank.account.model.Product;
-import com.nttdata.bank.account.model.Transaction;
+import com.nttdata.bank.account.model.Movement;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -32,6 +32,6 @@ public class AccountDTO {
 	
 	private Product product;
 	
-	private List<Transaction> transactions = new ArrayList<Transaction>();
+	private List<Movement> movements = new ArrayList<Movement>();
 
 }

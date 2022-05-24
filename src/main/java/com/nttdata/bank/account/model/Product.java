@@ -13,10 +13,16 @@ public class Product {
 	
 	private String name;
 	
-	private String type;
+	private Byte type;
 	
-	private String category;
+	private Byte category;
 	
-	private Double commission;
+	private String description;
+	
+	private Float commissionMaintenance;
+	
+	private Byte maxTransactions;
+	
+	private Float commissionTransaction;
 
 }
